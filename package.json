@@ -1,0 +1,21 @@
+{
+  "name": "projectdiary",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "serve": "lite-server"
+  },
+  "author": "Aleh Vasilyeu",
+  "license": "ISC",
+  "devDependencies": {
+    "grunt": "1.0.1",
+    "grunt-contrib-less": "1.4.0",
+    "less": "2.7.1",
+    "lite-server": "2.2.2"
+  },
+  "dependencies": {
+    "angular": "1.5.8"
+  }
+}
