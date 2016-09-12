@@ -1,0 +1,21 @@
+    <p>Таски на {{selectedDate}}:</p>
+    <label>TaskDate:
+            <input type="text"
+                   ng-model="taskDate">
+        </label>
+    <label>TaskTime:
+            <input type="text"
+                   ng-model="taskTime">
+        </label>
+    <label>TaskDescription:
+            <input type="text"
+                   ng-model="taskDescription">
+        </label>
+    <button ng-click="addTask(taskDate, taskTime, taskDescription)">Add task</button>
+    <dev ng-repeat="task in tasks">
+        <br>
+        <p>{{task.date}}</p>
+        <p>{{task.time}}</p>
+        <p>{{task.description}}</p>
+        <p>{{task.isDone}}</p>
+    </dev>

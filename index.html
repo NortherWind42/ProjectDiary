@@ -6,11 +6,22 @@
     <meta charset="UTF-8">
     <title>Diary</title>
 
+    <link rel="stylesheet" href="wwwroot\styles.css">
+
     <script src="node_modules\angular\angular.js"></script>
+
+    <script src="wwwroot\guidGenerator.js"></script>
+    <script src="wwwroot\task.js"></script>
+    <script src="wwwroot\dairy.js"></script>
+    <script src="wwwroot\dairyApp.module.js"></script>
+    <script src="wwwroot\dairyService.js"></script>
+    <script src="wwwroot\dairy.component.js"></script>
+    <script src="wwwroot\calendar.component.js"></script>
+    <script src="wwwroot\task-list.component.js"></script>
 </head>
 
-<body ng-app>
-    Hello {{1+1}}
+<body ng-app="dairyApp">
+    <dairy></dairy>
 </body>
 
 </html>
