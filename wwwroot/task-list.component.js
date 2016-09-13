@@ -4,18 +4,22 @@ dairyApp.
     component('taskList', {
         templateUrl: "wwwroot/task-list.html",
         controller: function (dairyService, $scope) {
-            $scope.selectedDate = dairyService.getSelectedDate();
-            dairyService.onSelectedDateUpdate(function (selectedDate) {
-                $scope.selectedDate = selectedDate;
-            });
-
-            $scope.tasks = dairyService.getTasks();
-            dairyService.onTasksUpdate(function (tasks) {
-                $scope.tasks = tasks;
-            });
+            onSelectedDateAsLineUpdated(dairyService.getSelectedDateAsLine());
+            dairyService.selectedDateAsLineUpdated(onSelectedDateAsLineUpdated);
+            onTasksUpdated(dairyService.getTasks());
+            dairyService.tasksUpdated(onTasksUpdated);
 
             $scope.addTask = function (taskDate, taskTime, taskDescription) {
                 dairyService.addTask(taskDate, taskTime, taskDescription);
+            }
+
+            function onSelectedDateAsLineUpdated (selectedDateAsLine) {
+                $scope.selectedDate = selectedDateAsLine;
+                dairyService.getDailyTasks(selectedDateAsLine);
+            }
+
+            function onTasksUpdated (tasks) {
+                $scope.tasks = tasks;
             }
         }
     })

@@ -4,34 +4,34 @@ dairyApp.
     service('dairyService', function () {
         let dairy = new Dairy();
         let currentDate = new Date();
-        let selectedDate = `${currentDate.getDate()}.${currentDate.getMonth() + 1}.${currentDate.getFullYear()}`;
-        let tasks = dairy.getDailyTasks(selectedDate);
+        let selectedDateAsLine = `${currentDate.getDate()}.${currentDate.getMonth() + 1}.${currentDate.getFullYear()}`;
+        let tasks = dairy.getDailyTasks(selectedDateAsLine);
 
-        let onSelectedDateUpdateCallback;
-        function notifyAboutUpdateSelectedDate() {
-            if (onSelectedDateUpdateCallback) {
-                onSelectedDateUpdateCallback(selectedDate);
+        let onSelectedDateAsLineUpdatedCallbackArr = [];
+        function notifyAboutSelectedDateAsLineUpdate() {
+            for (let onSelectedDateAsLineUpdatedCallback of onSelectedDateAsLineUpdatedCallbackArr) {
+                onSelectedDateAsLineUpdatedCallback(selectedDateAsLine);
             }
         }
 
-        let onTasksUpdateCallback;
+        let onTasksUpdatedCallback;
         function notifyAboutTasksUpdate() {
-            if (onTasksUpdateCallback) {
-                tasks = dairy.getDailyTasks(selectedDate);
-                onTasksUpdateCallback(tasks);
+            if (onTasksUpdatedCallback) {
+                tasks = dairy.getDailyTasks(selectedDateAsLine);
+                onTasksUpdatedCallback(tasks);
             }
         }
 
         return {
-            getSelectedDate() {
-                return selectedDate;
+            getSelectedDateAsLine() {
+                return selectedDateAsLine;
             },
-            changeSelectedDate(newSelectedDate) {
-                selectedDate = newSelectedDate;
-                notifyAboutUpdateSelectedDate();
+            changeSelectedDateAsLine(newSelectedDateAsLine) {
+                selectedDateAsLine = newSelectedDateAsLine;
+                notifyAboutSelectedDateAsLineUpdate();
             },
-            onSelectedDateUpdate(callback) {
-                onSelectedDateUpdateCallback = callback;
+            selectedDateAsLineUpdated(callback) {
+                onSelectedDateAsLineUpdatedCallbackArr.push(callback);
             },
 
             getTasks() {
@@ -61,8 +61,8 @@ dairyApp.
                 dairy.getDailyTasks(date);
                 notifyAboutTasksUpdate();
             },
-            onTasksUpdate(callback) {
-                onTasksUpdateCallback = callback;
+            tasksUpdated(callback) {
+                onTasksUpdatedCallback = callback;
             }
         }
     })
