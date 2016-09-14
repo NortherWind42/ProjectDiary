@@ -1,82 +1,95 @@
+@primaryBackground: @MountainMeadow;
+@primaryColor: white;
+@daysOfWeekBackground: @Alto;
+@daysOfWeekColor: @Emperor;
+@daysBackground: @Gallery;
+@daysColor: @DoveGray;
+@daysDisableColor: @DustyGray;
+
 calendar {
-   * {box-sizing:border-box;}
-    ul {list-style-type: none;}
-    body {font-family: Verdana,sans-serif;}
 
-    .month {
-        padding: 70px 25px;
-        width: 100%;
-        background: #1abc9c;
+   * { 
+       box-sizing:border-box;
     }
-
-    .month ul {
-        margin: 0;
-        padding: 0;
-    }
-
-    .month ul li {
-        color: white;
-        font-size: 20px;
-        text-transform: uppercase;
-        letter-spacing: 3px;
-    }
-
-    .month .prev {
-        float: left;
-        padding-top: 10px;
-    }
-
-    .month .next {
-        float: right;
-        padding-top: 10px;
-    }
-
-    .weekdays {
-        margin: 0;
-        padding: 10px 0;
-        background-color: #ddd;
-    }
-
-    .weekdays li {
-        display: inline-block;
-        width: 13.6%;
-        color: #666;
-        text-align: center;
-    }
-
-    .days {
-        padding: 10px 0;
-        background: #eee;
-        margin: 0;
-    }
-
-    .days li {
+    
+    ul {
         list-style-type: none;
-        display: inline-block;
-        width: 13.6%;
-        text-align: center;
-        margin-bottom: 5px;
-        font-size:12px;
-        color: #777;
     }
 
-    .active {
-        padding: 5px;
-        background: #1abc9c;
-        color: white !important
-    }
+    .calendar {
+        &_month {
+            &-top {
+                padding: 3.125em 1.563em;
+                width: 100%;    
+                background: @primaryBackground;
 
-    /* Add media queries for smaller screens */
-    @media screen and (max-width:720px) {
-        .weekdays li, .days li {width: 13.1%;}
-    }
+                ul {
+                    margin: 0;
+                    padding: 0;
 
-    @media screen and (max-width: 420px) {
-        .weekdays li, .days li {width: 12.5%;}
-        .days li .active {padding: 2px;}
-    }
+                    li {
+                        color: @primaryColor;
+                        font-size: 1.250em;
+                        text-transform: uppercase;
+                        letter-spacing: 0.188em;
+                     }
+                }
+            }
 
-    @media screen and (max-width: 290px) {
-        .weekdays li, .days li {width: 12.2%;}
+            &-down {
+                text-align: center;
+
+                table {
+                    width: 100%;
+                    border-collapse: collapse;
+
+                    td, th {
+                        vertical-align: middle;
+                    }
+                }
+            }
+        }
+
+        &_prev {
+            float: left;
+            padding-top: 0.625em;
+        }
+
+        &_next {
+            float: right;
+            padding-top: 0.625em;
+        }
+
+        &_days-title-container {
+            background-color: @daysOfWeekBackground;
+        }
+
+        &_day-of-week {
+            padding: 0.625em;
+            color: @daysOfWeekColor;
+        }
+
+        &_days-container {
+            background-color: @daysBackground;
+        }
+
+        &_day {
+            display: inline-block;
+            cursor: pointer;
+            line-height: 1.875em;
+            width: 1.875em;
+            height:1.875em;
+            color: @daysColor;
+
+            &.active {
+                background: @primaryBackground;
+                color: @primaryColor;
+            }
+
+            &.another-month {
+                color: @daysDisableColor;
+                cursor: default;
+            }
+        }
     }
 }

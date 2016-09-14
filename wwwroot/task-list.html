@@ -1,4 +1,4 @@
-    <p>Таски на {{selectedDate}}:</p>
+<!--<p>Таски на {{selectedDate}}:</p>
     <label>TaskDate:
             <input type="text"
                    ng-model="taskDate">
@@ -11,11 +11,38 @@
             <input type="text"
                    ng-model="taskDescription">
         </label>
-    <button ng-click="addTask(taskDate, taskTime, taskDescription)">Add task</button>
-    <dev ng-repeat="task in tasks">
-        <br>
-        <p>{{task.date}}</p>
-        <p>{{task.time}}</p>
-        <p>{{task.description}}</p>
-        <p>{{task.isDone}}</p>
-    </dev>
+    <button ng-click="addTask(taskDate, taskTime, taskDescription)">Add task</button>-->
+
+<div class="task-list">
+
+  <table>
+    <title>Записи</title>
+    <tbody>
+      <tr ng-repeat="task in tasks">
+        <td>{{task.time}}</td>
+        <td>{{task.description}}</td>
+        <td>
+          <md-checkbox type="checkbox" ng-model="task.isDone" aria-label="task.id" class="primaryBackground task-list_checkbox"></md-checkbox>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <md-input-container>
+            <input mdc-datetime-picker date="false" time="true" type="text" id="time" short-time="true" placeholder="Time" min-date="minDate"
+              format="hh:mm a" ng-model="time">
+          </md-input-container>
+        </td>
+        <td>
+          <md-input-container class="md-block">
+            <label>Заметка</label>
+            <input ng-model="time">
+          </md-input-container>
+        </td>
+        <td>
+
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>

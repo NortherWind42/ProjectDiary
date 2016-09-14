@@ -1,29 +1,42 @@
 <div class="calendar">
-    <div class="month">
+    <div class="calendar_month-top">
         <ul>
-            <li class="prev" ng-click="toPrevMonthClick()">❮</li>
-            <li class="next" ng-click="toNextMonthClick()">❯</li>
+            <li class="calendar_prev" ng-click="toPrevMonthClick()">❮</li>
+            <li class="calendar_next" ng-click="toNextMonthClick()">❯</li>
             <li style="text-align:center" ng-click="toThisDayClick()">
-                {{monthOfSelectedDate}}<br>
+                {{monthOfSelectedDate}}
+                <br>
                 <span style="font-size:18px">{{yearOfSelectedDate}}</span>
             </li>
-        </ul>
+        </ul>   
     </div>
 
+    <div class="calendar_month-down">
+        <table>
+            <thead>
+                <tr class="calendar_days-title-container">
+                    <th ng-repeat="dayOfTheWeek in daysOfTheWeek">
+                        <div class="calendar_day-of-week">
+                            {{dayOfTheWeek}}
+                        </div>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="calendar_days-container" ng-repeat="calendarDays in calendar">
+                    <td ng-repeat="calendarDay in calendarDays">
+                         <div class="calendar_day" 
+                              ng-click="dayClick(calendarDay.dayOfMonth, calendarDay.isDayInSelectedMonth)">
+                                <div  ng-class="{'calendar_day active': calendarDay.isDayInSelectedMonth &&
+                                                  calendarDay.dayOfMonth == dayOfSelectedDate,
+                                                 'calendar_day another-month': !calendarDay.isDayInSelectedMonth}"> 
+                                    {{calendarDay.dayOfMonth}}
+                                </div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 
-    <table>
-        <thead>
-            <tr>
-                <th ng-repeat="dayOfTheWeek in daysOfTheWeek">{{dayOfTheWeek}}</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr ng-repeat="calendarDays in calendar">
-                <td ng-repeat="calendarDay in calendarDays">
-                    <div ng-click="dayClick(calendarDay.dayOfMonth, calendarDay.isDayInSelectedMonth)"
-                         ng-class="{'active': calendarDay.isDayInSelectedMonth && calendarDay.dayOfMonth == dayOfSelectedDate}">{{calendarDay.dayOfMonth}}</div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
 </div>
