@@ -1,4 +1,20 @@
+main {
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+@media screen and (max-width: 740px) {
+    .md-button {
+        min-width: 80%;
+    }
+}
+
+@media screen and (max-width: 330px) {
+    .md-button {
+        min-width: 1%;
+    }
+}
+
 @import "colors.less";
 @import "calendar.less";
 @import "task-list.less";
-@import "angular-material-restyles.less";

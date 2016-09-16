@@ -1,9 +1,38 @@
-@primaryBackground: @MountainMeadow;
-
 task-list {
+
+    table {
+        margin: 0 auto; 
+    }
+
     .task-list {
         &_checkbox {
             display: inherit;
+        }
+
+        &_note {
+            word-wrap: break-word;
+            width: 90%;
+            max-width: 90%;
+        }
+
+        &_task-completed {
+            text-decoration: line-through;
+        }
+
+        &_add-button {
+            display: block;
+            margin: auto;
+            margin-bottom: 1.875em;
+            width: 100px;
+        }
+
+        &_save-button {
+            display: block;
+            margin: auto;
+        }
+
+        &_edit-task-input {
+            margin-top: 2.188em;
         }
     }
 }

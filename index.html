@@ -4,14 +4,17 @@
 <head>
     <base href="/">
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="icon.png">
+    <meta name="viewport" content="width=device-width">
 
     <title>Diary</title>
 
     <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="wwwroot\styles.css">
 
     <script src="node_modules\angular\angular.js"></script>
+    <script src="wwwroot\mdxUtil.js"></script>
 
     <script src="wwwroot\guidGenerator.js"></script>
     <script src="wwwroot\task.js"></script>
@@ -25,9 +28,22 @@
 
 <body ng-app="dairyApp" ng-cloak>
 
-    <dairy></dairy>
+    <div layout="column" layout-fill>
+        <main flex>
+            <div>
+                <dairy></dairy>
+            </div>
+        </main>
+        <footer>
+            <md-toolbar class="md-scroll-shrink">
+                <div layout="row" layout-align="center center" flex>
+                    <h1 class="md-subhead">© Diary 2016 Васильев Олег</h1>
+                </div>
+            </md-toolbar>
+        </footer>
+    </div>
 
-    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>

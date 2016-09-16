@@ -1,10 +1,10 @@
 <div class="calendar">
-    <div class="calendar_month-top">
+    <div class="calendar_month-top" mdx-paint-bg="md-primary">
         <ul>
             <li class="calendar_prev" ng-click="toPrevMonthClick()">❮</li>
             <li class="calendar_next" ng-click="toNextMonthClick()">❯</li>
             <li style="text-align:center" ng-click="toThisDayClick()">
-                {{monthOfSelectedDate}}
+                {{monthOfSelectedDate}}     
                 <br>
                 <span style="font-size:18px">{{yearOfSelectedDate}}</span>
             </li>
@@ -25,14 +25,13 @@
             <tbody>
                 <tr class="calendar_days-container" ng-repeat="calendarDays in calendar">
                     <td ng-repeat="calendarDay in calendarDays">
-                         <div class="calendar_day" 
-                              ng-click="dayClick(calendarDay.dayOfMonth, calendarDay.isDayInSelectedMonth)">
-                                <div  ng-class="{'calendar_day active': calendarDay.isDayInSelectedMonth &&
-                                                  calendarDay.dayOfMonth == dayOfSelectedDate,
-                                                 'calendar_day another-month': !calendarDay.isDayInSelectedMonth}"> 
-                                    {{calendarDay.dayOfMonth}}
-                                </div>
-                        </div>
+                         <md-button 
+                                    ng-click="dayClick(calendarDay.dayOfMonth, calendarDay.isDayInSelectedMonth)"
+                                    ng-class="{'md-primary md-raised': calendarDay.isDayInSelectedMonth &&
+                                                calendarDay.dayOfMonth == dayOfSelectedDate}"
+                                    ng-disabled='!calendarDay.isDayInSelectedMonth'>
+                               {{calendarDay.dayOfMonth}}
+                        </md-button>
                     </td>
                 </tr>
             </tbody>

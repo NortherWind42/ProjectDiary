@@ -1,4 +1,3 @@
-@primaryBackground: @MountainMeadow;
 @primaryColor: white;
 @daysOfWeekBackground: @Alto;
 @daysOfWeekColor: @Emperor;
@@ -21,7 +20,6 @@ calendar {
             &-top {
                 padding: 3.125em 1.563em;
                 width: 100%;    
-                background: @primaryBackground;
 
                 ul {
                     margin: 0;
@@ -71,25 +69,6 @@ calendar {
 
         &_days-container {
             background-color: @daysBackground;
-        }
-
-        &_day {
-            display: inline-block;
-            cursor: pointer;
-            line-height: 1.875em;
-            width: 1.875em;
-            height:1.875em;
-            color: @daysColor;
-
-            &.active {
-                background: @primaryBackground;
-                color: @primaryColor;
-            }
-
-            &.another-month {
-                color: @daysDisableColor;
-                cursor: default;
-            }
         }
     }
 }

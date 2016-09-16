@@ -1,15 +1,10 @@
 'use strict';
 
 class Task {
-    constructor(id, date, time, description) {
+    constructor(id, date, note) {
         this.id = id;
         this.date = date;
-        this.time = time;
-        this.description = description;
+        this.note = note;
         this.isDone = false;
-    }
-
-    complete() {
-        this.isDone = true;
     }
 }
