@@ -1,18 +1,20 @@
 task-list {
 
     table {
+        position: relative;
         margin: 0 auto; 
+        z-index: 1;
     }
 
     .task-list {
         &_checkbox {
-            display: inherit;
+            display: inherit; 
         }
 
         &_note {
             word-wrap: break-word;
             width: 90%;
-            max-width: 90%;
+            max-width: 90%; 
         }
 
         &_task-completed {
@@ -34,5 +36,24 @@ task-list {
         &_edit-task-input {
             margin-top: 2.188em;
         }
+
+
+        &_swipe-area {
+            display: none;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+    }
+}
+
+@media screen and (max-width: 740px) {
+    task-list .task-list_title {
+        display: none;
+    }
+
+    task-list .task-list_swipe-area {
+        display: block;
     }
 }

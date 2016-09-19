@@ -6,6 +6,7 @@ dairyApp.
         controller: function (dairyService, $scope) {
 
             $scope.daysOfTheWeek = ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс'];
+            $scope.isCalendarOpen = false;
 
             onSelectedDateAsLineUpdated(dairyService.getSelectedDateAsLine());
             dairyService.selectedDateAsLineUpdated(onSelectedDateAsLineUpdated);
@@ -33,6 +34,7 @@ dairyApp.
                 if (isDayInSelectedMonth) {
                     let [day, monthOfSelectedDate, yearOfSelectedDate] = dairyService.getSelectedDateAsLine().split('.');
                     dairyService.changeSelectedDateAsLine(`${dayOfMonth}.${monthOfSelectedDate}.${yearOfSelectedDate}`);
+                    $scope.isCalendarOpen = false;
                 }
             }
 
@@ -40,6 +42,7 @@ dairyApp.
 
             function onSelectedDateAsLineUpdated(selectedDateAsLine) {
                 let [dayOfSelectedDate, monthOfSelectedDate, yearOfSelectedDate] = selectedDateAsLine.split('.');
+                $scope.selectedDateAsLine = selectedDateAsLine;
                 $scope.dayOfSelectedDate = dayOfSelectedDate;
                 $scope.monthOfSelectedDate = getSelectedMonthByDate(monthOfSelectedDate - 1);
                 $scope.yearOfSelectedDate = yearOfSelectedDate;

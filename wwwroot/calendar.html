@@ -1,41 +1,57 @@
 <div class="calendar">
-    <div class="calendar_month-top" mdx-paint-bg="md-primary">
-        <ul>
-            <li class="calendar_prev" ng-click="toPrevMonthClick()">❮</li>
-            <li class="calendar_next" ng-click="toNextMonthClick()">❯</li>
-            <li style="text-align:center" ng-click="toThisDayClick()">
-                {{monthOfSelectedDate}}     
-                <br>
-                <span style="font-size:18px">{{yearOfSelectedDate}}</span>
-            </li>
-        </ul>   
-    </div>
+    <md-button  ng-click="isCalendarOpen = !isCalendarOpen"
+                class="md-primary md-raised calendar_open-calendar-button">
+                {{selectedDateAsLine}}
+                </md-button>
+    <div class="calendar_calendar-collapsable"
+         ng-class="{ expanded: isCalendarOpen }"> 
+        <div class="calendar_month-top" mdx-paint-bg="md-primary">
+                <ul>
+                    <li class="calendar_prev" ng-click="toPrevMonthClick()">❮</li>
+                    <li class="calendar_next" ng-click="toNextMonthClick()">❯</li>
+                    <li style="text-align:center" ng-click="toThisDayClick()">
+                            {{monthOfSelectedDate}}     
+                        <br>
+                        <span style="font-size:18px">{{yearOfSelectedDate}}</span>
+                    </li>
+                </ul>   
+            </div>
 
-    <div class="calendar_month-down">
-        <table>
-            <thead>
-                <tr class="calendar_days-title-container">
-                    <th ng-repeat="dayOfTheWeek in daysOfTheWeek">
-                        <div class="calendar_day-of-week">
-                            {{dayOfTheWeek}}
-                        </div>
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr class="calendar_days-container" ng-repeat="calendarDays in calendar">
-                    <td ng-repeat="calendarDay in calendarDays">
-                         <md-button 
-                                    ng-click="dayClick(calendarDay.dayOfMonth, calendarDay.isDayInSelectedMonth)"
-                                    ng-class="{'md-primary md-raised': calendarDay.isDayInSelectedMonth &&
-                                                calendarDay.dayOfMonth == dayOfSelectedDate}"
-                                    ng-disabled='!calendarDay.isDayInSelectedMonth'>
-                               {{calendarDay.dayOfMonth}}
-                        </md-button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+            <div class="calendar_month-down">
+                <table>
+                    <thead>
+                        <tr class="calendar_days-title-container">
+                            <th ng-repeat="dayOfTheWeek in daysOfTheWeek">
+                                <div class="calendar_day-of-week">
+                                    {{dayOfTheWeek}}
+                                </div>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="calendar_days-container" ng-repeat="calendarDays in calendar">
+                            <td ng-repeat="calendarDay in calendarDays">
+                                <md-button  ng-click="dayClick(calendarDay.dayOfMonth, calendarDay.isDayInSelectedMonth)"
+                                            ng-class="{'md-primary md-raised': calendarDay.isDayInSelectedMonth &&
+                                                        calendarDay.dayOfMonth == dayOfSelectedDate}"
+                                            ng-disabled='!calendarDay.isDayInSelectedMonth'>
+                                    {{calendarDay.dayOfMonth}}
+                                </md-button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="7">
+                                <md-button  ng-click="isCalendarOpen = false"
+                                            ng-show="isCalendarOpen"
+                                            class="md-primary md-raised calendar_close-calendar-button">
+                                            <md-icon class="material-icons md-24">expand_less</md-icon>
+                                            скрыть календарь
+                                            </md-button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
     </div>
 
 </div>

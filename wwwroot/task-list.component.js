@@ -26,6 +26,23 @@ dairyApp.
                 dairyService.updateTaskNote(taskId, newTaskNote);
             }
 
+            $scope.onSwipeLeft = function () {
+                let [dayOfSelectedDate, monthOfSelectedDate, yearOfSelectedDate] = dairyService.getSelectedDateAsLine().split('.');
+                let currentSelectedDate = new Date(yearOfSelectedDate, monthOfSelectedDate - 1, dayOfSelectedDate);
+                let newSelectedDate = new Date(currentSelectedDate);
+                newSelectedDate.setDate(currentSelectedDate.getDate() + 1);
+                dairyService.changeSelectedDateAsLine(`${newSelectedDate.getDate()}.${newSelectedDate.getMonth() + 1}.${newSelectedDate.getFullYear()}`);
+            }
+
+            
+            $scope.onSwipeRight = function () {
+                let [dayOfSelectedDate, monthOfSelectedDate, yearOfSelectedDate] = dairyService.getSelectedDateAsLine().split('.');
+                let currentSelectedDate = new Date(yearOfSelectedDate, monthOfSelectedDate - 1, dayOfSelectedDate);
+                let newSelectedDate = new Date(currentSelectedDate);
+                newSelectedDate.setDate(currentSelectedDate.getDate() - 1);
+                dairyService.changeSelectedDateAsLine(`${newSelectedDate.getDate()}.${newSelectedDate.getMonth() + 1}.${newSelectedDate.getFullYear()}`);
+            }
+
             function onSelectedDateAsLineUpdated(selectedDateAsLine) {
                 $scope.selectedDate = selectedDateAsLine;
                 dairyService.getDailyTasks(selectedDateAsLine);

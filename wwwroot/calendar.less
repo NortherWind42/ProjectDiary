@@ -6,7 +6,7 @@
 @daysDisableColor: @DustyGray;
 
 calendar {
-
+    
    * { 
        box-sizing:border-box;
     }
@@ -50,12 +50,12 @@ calendar {
 
         &_prev {
             float: left;
-            padding-top: 0.625em;
+            padding-top: 0.520em;
         }
 
         &_next {
             float: right;
-            padding-top: 0.625em;
+            padding-top: 0.520em;
         }
 
         &_days-title-container {
@@ -63,12 +63,62 @@ calendar {
         }
 
         &_day-of-week {
-            padding: 0.625em;
+            padding: 0.620em;
             color: @daysOfWeekColor;
         }
 
         &_days-container {
             background-color: @daysBackground;
         }
+
+        &_close-calendar-button {
+            display: none;
+            margin: 0;
+            width: 100%;
+        }
+
+        &_open-calendar-button {
+            display: none;
+            margin: 0;
+            width: 100%;
+        }
+
+        &_calendar-collapsable {
+            &.expanded {
+                height: 28.438em;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 740px) {
+    .md-button {
+        min-width: 80%;
+    }
+
+    calendar .calendar_month-top {
+        padding: 0.938em 0.625em;
+    }
+
+    calendar .calendar_close-calendar-button {
+        display: inline;
+    }
+
+    calendar .calendar_open-calendar-button {
+        display: inline;
+    }
+
+    calendar .calendar_calendar-collapsable {
+        display: block;
+        overflow: hidden;
+        height: 0;
+        width: 100%;
+        transition: height 1s; 
+    }
+}
+
+@media screen and (max-width: 330px) {
+    .md-button {
+        min-width: 1%;
     }
 }
