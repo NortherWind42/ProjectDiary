@@ -1,6 +1,6 @@
 'use strict';
 
-dairyApp.
+angular.module('dairyApp').
     component('dairy', {
         templateUrl: "wwwroot/dairy.html"
     })

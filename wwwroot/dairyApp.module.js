@@ -1,16 +1,17 @@
 'use strict';
 
-let dairyApp = angular.module('dairyApp', [
+angular.module('dairyApp', [
     'ngMaterial',
     'mdxUtil'
 ]);
 
-dairyApp.config(function ($mdThemingProvider) {
-    $mdThemingProvider.theme('default')
-        .primaryPalette('teal')
-});
+angular.module('dairyApp').
+    config(function ($mdThemingProvider) {
+        $mdThemingProvider.theme('default')
+            .primaryPalette('teal')
+    });
 
-
+    
 
 
 

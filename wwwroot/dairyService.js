@@ -1,10 +1,9 @@
 'use strict';
 
-dairyApp.
-    service('dairyService', function () {
-        let localStorageTasksKey = "dairyTasks";  
-        let tasks1 = JSON.parse(localStorage.getItem(localStorageTasksKey))
-        let dairy = new Dairy(tasks1);
+angular.module('dairyApp').
+    service('dairyService', function (tasksStoreService) {
+
+        let dairy = new Dairy(tasksStoreService.getTasksFromStore());
         let currentDate = new Date();
         let selectedDateAsLine = `${currentDate.getDate()}.${currentDate.getMonth() + 1}.${currentDate.getFullYear()}`;
         let tasks = dairy.getDailyTasks(selectedDateAsLine);
@@ -21,10 +20,12 @@ dairyApp.
             if (onTasksUpdatedCallback) {
                 tasks = dairy.getDailyTasks(selectedDateAsLine);
                 onTasksUpdatedCallback(tasks);
-
-                let serialTasks = JSON.stringify(dairy.getAllTasks());
-                localStorage.setItem(localStorageTasksKey, serialTasks);
             }
+        }
+
+        function notifyAboutTasksUpdateAndUpdateTasksInStore() {
+            notifyAboutTasksUpdate();
+            tasksStoreService.sendTasksToStore(dairy.getAllTasks());
         }
 
         return {
@@ -44,23 +45,23 @@ dairyApp.
             },
             addTask(taskDate, taskNote) {
                 dairy.addTask(taskDate, taskNote);
-                notifyAboutTasksUpdate();
+                notifyAboutTasksUpdateAndUpdateTasksInStore();
             },
             removeTask(taskId) {
-                dairy.removeTask(taskId);   
-                notifyAboutTasksUpdate();
+                dairy.removeTask(taskId);
+                notifyAboutTasksUpdateAndUpdateTasksInStore();
             },
             markTask(taskId, isDone) {
                 dairy.markTask(taskId, isDone);
-                notifyAboutTasksUpdate();
+                notifyAboutTasksUpdateAndUpdateTasksInStore();
             },
             updateTaskNote(taskId, newTaskNote) {
                 dairy.updateTaskNote(taskId, newTaskNote);
-                notifyAboutTasksUpdate();
+                notifyAboutTasksUpdateAndUpdateTasksInStore();
             },
             getDailyTasks(date) {
                 dairy.getDailyTasks(date);
-                notifyAboutTasksUpdate();
+                notifyAboutTasksUpdateAndUpdateTasksInStore();
             },
             tasksUpdated(callback) {
                 onTasksUpdatedCallback = callback;

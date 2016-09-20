@@ -1,6 +1,6 @@
 'use strict';
 
-dairyApp.
+angular.module('dairyApp').
     component('calendar', {
         templateUrl: "wwwroot/calendar.html",
         controller: function (dairyService, $scope) {

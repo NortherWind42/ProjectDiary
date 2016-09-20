@@ -1,6 +1,6 @@
 'use strict';
 
-dairyApp.
+angular.module('dairyApp').
     component('taskList', {
         templateUrl: "wwwroot/task-list.html",
         controller: function (dairyService, $scope) {
