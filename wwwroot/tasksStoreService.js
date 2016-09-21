@@ -5,6 +5,9 @@ angular.module('dairyApp').
         let localStorageKey = "dairyTasks";
 
         return {
+            getlocalStorageKey() {
+                return localStorageKey;
+            },
             getTasksFromStore() {   
                  let tasks = JSON.parse(localStorage.getItem(localStorageKey));
                  return tasks;

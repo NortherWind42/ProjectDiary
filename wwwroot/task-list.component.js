@@ -34,7 +34,7 @@ angular.module('dairyApp').
                 dairyService.changeSelectedDateAsLine(`${newSelectedDate.getDate()}.${newSelectedDate.getMonth() + 1}.${newSelectedDate.getFullYear()}`);
             }
 
-            
+
             $scope.onSwipeRight = function () {
                 let [dayOfSelectedDate, monthOfSelectedDate, yearOfSelectedDate] = dairyService.getSelectedDateAsLine().split('.');
                 let currentSelectedDate = new Date(yearOfSelectedDate, monthOfSelectedDate - 1, dayOfSelectedDate);
@@ -45,11 +45,10 @@ angular.module('dairyApp').
 
             function onSelectedDateAsLineUpdated(selectedDateAsLine) {
                 $scope.selectedDate = selectedDateAsLine;
-                dairyService.getDailyTasks(selectedDateAsLine);
+                dairyService.updateDailyTasks(selectedDateAsLine);
             }
 
             function onTasksUpdated(tasks) {
-                
                 $scope.tasks = tasks;
             }
         }

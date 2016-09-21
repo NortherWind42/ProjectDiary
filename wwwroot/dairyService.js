@@ -24,8 +24,8 @@ angular.module('dairyApp').
         }
 
         function notifyAboutTasksUpdateAndUpdateTasksInStore() {
-            notifyAboutTasksUpdate();
             tasksStoreService.sendTasksToStore(dairy.getAllTasks());
+            notifyAboutTasksUpdate();
         }
 
         return {
@@ -59,9 +59,8 @@ angular.module('dairyApp').
                 dairy.updateTaskNote(taskId, newTaskNote);
                 notifyAboutTasksUpdateAndUpdateTasksInStore();
             },
-            getDailyTasks(date) {
-                dairy.getDailyTasks(date);
-                notifyAboutTasksUpdateAndUpdateTasksInStore();
+            updateDailyTasks(date) {
+                 notifyAboutTasksUpdate();
             },
             tasksUpdated(callback) {
                 onTasksUpdatedCallback = callback;

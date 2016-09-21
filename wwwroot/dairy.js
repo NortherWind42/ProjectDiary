@@ -59,6 +59,7 @@ class Dairy {
     }
 
     getDailyTasks(date) {
+       
         if (!this.Tasks || this.Tasks == null) {
             return;
         }
