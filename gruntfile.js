@@ -5,6 +5,7 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-karma');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-postcss');
+  grunt.loadNpmTasks('grunt-githooks');
 
   grunt.initConfig({
 
@@ -78,6 +79,12 @@ module.exports = function (grunt) {
       },
       dist: {
         src: 'wwwroot/styles.css'
+      }
+    },
+
+    githooks: {
+      all: {
+        'pre-commit': 'jshint',
       }
     }
 
