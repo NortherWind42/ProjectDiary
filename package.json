@@ -3,9 +3,16 @@
   "version": "0.0.0",
   "description": "site for notes",
   "scripts": {
-    "serve": "lite-server"
+    "serve": "lite-server",
+    "test": "echo \"Error: I SHOULD FAIL LOLOLOLOLOL \" && exit 1",
+    "foo": "echo \"fooo\" && exit 0",
+    "bar": "echo \"bar\" && exit 0"
   },
-  "pre-commit": "grunt jshint",
+  "pre-commit": [
+    "foo",
+    "bar",
+    "test"
+  ],
   "author": "Aleh Vasilyeu",
   "license": "ISC",
   "devDependencies": {

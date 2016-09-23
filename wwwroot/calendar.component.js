@@ -29,7 +29,7 @@ angular.module('dairyApp').
             $scope.toThisDayClick = function () {
                 let today = new Date();
                 dairyService.changeSelectedDateAsLine(`${today.getDate()}.${today.getMonth() + 1}.${today.getFullYear()}`);
-            };
+            }
 
             $scope.dayClick = function (dayOfMonth, isDayInSelectedMonth) {
                 if (isDayInSelectedMonth) {
@@ -37,7 +37,7 @@ angular.module('dairyApp').
                     dairyService.changeSelectedDateAsLine(`${dayOfMonth}.${monthOfSelectedDate}.${yearOfSelectedDate}`);
                     $scope.isCalendarOpen = false;
                 }
-            }
+            };
 
             function onSelectedDateAsLineUpdated(selectedDateAsLine) {
                 let [dayOfSelectedDate, monthOfSelectedDate, yearOfSelectedDate] = selectedDateAsLine.split('.');
