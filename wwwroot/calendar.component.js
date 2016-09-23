@@ -37,7 +37,7 @@ angular.module('dairyApp').
                     dairyService.changeSelectedDateAsLine(`${dayOfMonth}.${monthOfSelectedDate}.${yearOfSelectedDate}`);
                     $scope.isCalendarOpen = false;
                 }
-            };
+            }
 
             function onSelectedDateAsLineUpdated(selectedDateAsLine) {
                 let [dayOfSelectedDate, monthOfSelectedDate, yearOfSelectedDate] = selectedDateAsLine.split('.');
@@ -57,12 +57,12 @@ angular.module('dairyApp').
                 let firstDayOfSelectedMonth = new Date(yearOfSelectedDate, monthOfSelectedDate - 1, 1);
 
                 let firstCalendarDay;
-                for (firstCalendarDay = firstDayOfSelectedMonth; firstCalendarDay.getDay() != 1; firstCalendarDay = new Date(firstCalendarDay.getTime() - 86400000)) { }
+                for (firstCalendarDay = firstDayOfSelectedMonth; firstCalendarDay.getDay() !== 1; firstCalendarDay = new Date(firstCalendarDay.getTime() - 86400000)) { }
 
                 let allCalendarDays = [];
                 for (let i = 0; i < 42; i++) {
                     let newCalendarDay = new Date(firstCalendarDay.getTime() + 86400000 * i);
-                    allCalendarDays.push({ dayOfMonth: newCalendarDay.getDate(), isDayInSelectedMonth: (newCalendarDay.getMonth() + 1) == monthOfSelectedDate });
+                    allCalendarDays.push({ dayOfMonth: newCalendarDay.getDate(), isDayInSelectedMonth: (newCalendarDay.getMonth() + 1) === monthOfSelectedDate });
                 }
 
                 let calendar = [];
