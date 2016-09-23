@@ -29,7 +29,7 @@ angular.module('dairyApp').
             $scope.toThisDayClick = function () {
                 let today = new Date();
                 dairyService.changeSelectedDateAsLine(`${today.getDate()}.${today.getMonth() + 1}.${today.getFullYear()}`);
-            };
+            }
 
             $scope.dayClick = function (dayOfMonth, isDayInSelectedMonth) {
                 if (isDayInSelectedMonth) {
