@@ -6,6 +6,7 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-postcss');
   grunt.loadNpmTasks('grunt-githooks');
+  grunt.loadNpmTasks("grunt-jscs");
 
   grunt.initConfig({
 
@@ -65,7 +66,60 @@ module.exports = function (grunt) {
     },
 
     jshint: {
-      all: ['gruntfile.js', 'wwwroot/*.js', 'test/*.js']
+      all:  grunt.file.readJSON('path.json'),
+      // options: {
+      //   "node": true,
+      //   "browser": true,
+      //   "bitwise": true,
+      //   "camelcase": true,
+      //   "curly": true,
+      //   "eqeqeq": true,
+      //   "immed": true,
+      //   "indent": 2,
+      //   "latedef": true,
+      //   "newcap": true,
+      //   "noarg": true,
+      //   "quotmark": "single",
+      //   "regexp": true,
+      //   "undef": true,
+      //   "unused": true,
+      //   "strict": true,
+      //   "trailing": false,
+      //   "smarttabs": true,
+      //   "white": false,
+      //   "globals": {
+      //     "$": false,
+      //     "angular": false,
+      //     "browser": false,
+      //     "repeater": false,
+      //     "element": false,
+      //     "inject": false,
+      //     "afterEach": false,
+      //     "beforeEach": false,
+      //     "confirm": false,
+      //     "context": false,
+      //     "describe": false,
+      //     "expect": false,
+      //     "it": false,
+      //     "jasmine": false,
+      //     "JSHINT": false,
+      //     "mostRecentAjaxRequest": false,
+      //     "qq": false,
+      //     "runs": false,
+      //     "spyOn": false,
+      //     "spyOnEvent": false,
+      //     "waitsFor": false,
+      //     "xdescribe": false
+      //   }
+      // }
+    },
+
+    jscs: {
+      src: grunt.file.readJSON('path.json'),
+      options: {
+        config: ".jscsrc",
+        fix: true
+      }
     },
 
     postcss: {
@@ -84,7 +138,7 @@ module.exports = function (grunt) {
 
     githooks: {
       all: {
-        'pre-commit': 'jshint',
+        'pre-commit': 'jscs jshint'
       }
     }
 

@@ -1,8 +1,8 @@
 /*jshint esversion: 6 */
-(function () { "use strict"; }());
+(function() { 'use strict'; }());
 
 angular.module('dairyApp').
-    service('dairyService', function (tasksStoreService) {
+    service('dairyService', function(tasksStoreService) {
 
         let dairy = new Dairy(tasksStoreService.getTasksFromStore());
         let currentDate = new Date();
@@ -11,60 +11,60 @@ angular.module('dairyApp').
 
         let onSelectedDateAsLineUpdatedCallbackArr = [];
         function notifyAboutSelectedDateAsLineUpdate() {
-            for (let onSelectedDateAsLineUpdatedCallback of onSelectedDateAsLineUpdatedCallbackArr) {
-                onSelectedDateAsLineUpdatedCallback(selectedDateAsLine);
-            }
+          for (let onSelectedDateAsLineUpdatedCallback of onSelectedDateAsLineUpdatedCallbackArr) {
+            onSelectedDateAsLineUpdatedCallback(selectedDateAsLine);
+          }
         }
 
         let onTasksUpdatedCallback;
         function notifyAboutTasksUpdate() {
-            if (onTasksUpdatedCallback) {
-                tasks = dairy.getDailyTasks(selectedDateAsLine);
-                onTasksUpdatedCallback(tasks);
-            }
+          if (onTasksUpdatedCallback) {
+            tasks = dairy.getDailyTasks(selectedDateAsLine);
+            onTasksUpdatedCallback(tasks);
+          }
         }
 
         function notifyAboutTasksUpdateAndUpdateTasksInStore() {
-            tasksStoreService.sendTasksToStore(dairy.getAllTasks());
-            notifyAboutTasksUpdate();
+          tasksStoreService.sendTasksToStore(dairy.getAllTasks());
+          notifyAboutTasksUpdate();
         }
 
         return {
             getSelectedDateAsLine() {
-                return selectedDateAsLine;
+              return selectedDateAsLine;
             },
             changeSelectedDateAsLine(newSelectedDateAsLine) {
-                selectedDateAsLine = newSelectedDateAsLine;
-                notifyAboutSelectedDateAsLineUpdate();
+              selectedDateAsLine = newSelectedDateAsLine;
+              notifyAboutSelectedDateAsLineUpdate();
             },
             selectedDateAsLineUpdated(callback) {
-                onSelectedDateAsLineUpdatedCallbackArr.push(callback);
+              onSelectedDateAsLineUpdatedCallbackArr.push(callback);
             },
 
             getTasks() {
-                return tasks;
+              return tasks;
             },
             addTask(taskDate, taskNote) {
-                dairy.addTask(taskDate, taskNote);
-                notifyAboutTasksUpdateAndUpdateTasksInStore();
+              dairy.addTask(taskDate, taskNote);
+              notifyAboutTasksUpdateAndUpdateTasksInStore();
             },
             removeTask(taskId) {
-                dairy.removeTask(taskId);
-                notifyAboutTasksUpdateAndUpdateTasksInStore();
+              dairy.removeTask(taskId);
+              notifyAboutTasksUpdateAndUpdateTasksInStore();
             },
             markTask(taskId, isDone) {
-                dairy.markTask(taskId, isDone);
-                notifyAboutTasksUpdateAndUpdateTasksInStore();
+              dairy.markTask(taskId, isDone);
+              notifyAboutTasksUpdateAndUpdateTasksInStore();
             },
             updateTaskNote(taskId, newTaskNote) {
-                dairy.updateTaskNote(taskId, newTaskNote);
-                notifyAboutTasksUpdateAndUpdateTasksInStore();
+              dairy.updateTaskNote(taskId, newTaskNote);
+              notifyAboutTasksUpdateAndUpdateTasksInStore();
             },
             updateDailyTasks(date) {
-                 notifyAboutTasksUpdate();
+              notifyAboutTasksUpdate();
             },
             tasksUpdated(callback) {
-                onTasksUpdatedCallback = callback;
+              onTasksUpdatedCallback = callback;
             }
-        };
-    });
+          };
+      });

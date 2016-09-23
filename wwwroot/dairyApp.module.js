@@ -1,5 +1,5 @@
 /*jshint esversion: 6 */
-(function () { "use strict"; }());
+(function() { 'use strict'; }());
 
 angular.module('dairyApp', [
     'ngMaterial',
@@ -7,16 +7,8 @@ angular.module('dairyApp', [
 ]);
 
 angular.module('dairyApp').
-    config(function ($mdThemingProvider) {
+    config(function($mdThemingProvider) {
         $mdThemingProvider.theme('default')
             .primaryPalette('teal');
-    });
-
-    
-
-
-
-
-
-
+      });
 
