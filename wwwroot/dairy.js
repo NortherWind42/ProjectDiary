@@ -1,8 +1,9 @@
-'use strict';
+/*jshint esversion: 6 */
+(function () { "use strict"; }());
 
 class Dairy {
     constructor(tasks) {
-        this.Tasks = tasks == null ? [] : tasks;
+        this.Tasks = tasks === null ? [] : tasks;
     }
 
     getAllTasks() {
@@ -10,7 +11,7 @@ class Dairy {
     }
 
     addTask(taskDate, taskNote) {
-        if (!taskNote || taskNote == "") {
+        if (!taskNote || taskNote === "") {
             return;
         }
         let guidGenerator = new GuidGenerator();
@@ -19,7 +20,7 @@ class Dairy {
     }
 
     removeTask(taskId) {
-        if (!this.Tasks || this.Tasks == null) {
+        if (!this.Tasks || this.Tasks === null) {
             return;
         }
         for (let task of this.Tasks) {
@@ -32,7 +33,7 @@ class Dairy {
     }
 
     markTask(taskId, isDone) {
-        if (!this.Tasks || this.Tasks == null) {
+        if (!this.Tasks || this.Tasks === null) {
             return;
         }
         for (let task of this.Tasks) {
@@ -44,10 +45,10 @@ class Dairy {
     }
 
     updateTaskNote(taskId, newTaskNote) {
-        if (!newTaskNote || newTaskNote == "") {
+        if (!newTaskNote || newTaskNote === "") {
             return;
         }
-        if (!this.Tasks || this.Tasks == null) {
+        if (!this.Tasks || this.Tasks === null) {
             return;
         }
         for (let task of this.Tasks) {
@@ -60,7 +61,7 @@ class Dairy {
 
     getDailyTasks(date) {
        
-        if (!this.Tasks || this.Tasks == null) {
+        if (!this.Tasks || this.Tasks === null) {
             return;
         }
         let dailyTasks = [];

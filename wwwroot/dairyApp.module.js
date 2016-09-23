@@ -1,4 +1,5 @@
-'use strict';
+/*jshint esversion: 6 */
+(function () { "use strict"; }());
 
 angular.module('dairyApp', [
     'ngMaterial',
@@ -8,7 +9,7 @@ angular.module('dairyApp', [
 angular.module('dairyApp').
     config(function ($mdThemingProvider) {
         $mdThemingProvider.theme('default')
-            .primaryPalette('teal')
+            .primaryPalette('teal');
     });
 
     

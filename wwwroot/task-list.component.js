@@ -1,4 +1,5 @@
-'use strict';
+/*jshint esversion: 6 */
+(function () { "use strict"; }());
 
 angular.module('dairyApp').
     component('taskList', {
@@ -20,11 +21,11 @@ angular.module('dairyApp').
 
             $scope.markTask = function (taskId, isDone) {
                 dairyService.markTask(taskId, isDone);
-            }
+            };
 
             $scope.updateTaskNote = function (taskId, newTaskNote) {
                 dairyService.updateTaskNote(taskId, newTaskNote);
-            }
+            };
 
             $scope.onSwipeLeft = function () {
                 let [dayOfSelectedDate, monthOfSelectedDate, yearOfSelectedDate] = dairyService.getSelectedDateAsLine().split('.');
@@ -32,7 +33,7 @@ angular.module('dairyApp').
                 let newSelectedDate = new Date(currentSelectedDate);
                 newSelectedDate.setDate(currentSelectedDate.getDate() + 1);
                 dairyService.changeSelectedDateAsLine(`${newSelectedDate.getDate()}.${newSelectedDate.getMonth() + 1}.${newSelectedDate.getFullYear()}`);
-            }
+            };
 
 
             $scope.onSwipeRight = function () {
@@ -41,7 +42,7 @@ angular.module('dairyApp').
                 let newSelectedDate = new Date(currentSelectedDate);
                 newSelectedDate.setDate(currentSelectedDate.getDate() - 1);
                 dairyService.changeSelectedDateAsLine(`${newSelectedDate.getDate()}.${newSelectedDate.getMonth() + 1}.${newSelectedDate.getFullYear()}`);
-            }
+            };
 
             function onSelectedDateAsLineUpdated(selectedDateAsLine) {
                 $scope.selectedDate = selectedDateAsLine;
@@ -52,4 +53,4 @@ angular.module('dairyApp').
                 $scope.tasks = tasks;
             }
         }
-    })
+    });

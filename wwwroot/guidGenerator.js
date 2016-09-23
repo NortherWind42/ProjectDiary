@@ -1,4 +1,5 @@
-'use strict';
+/*jshint esversion: 6 */
+(function () { "use strict"; }());
 
 class GuidGenerator {
     generate() {

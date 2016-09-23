@@ -1,4 +1,5 @@
-'use strict';
+/*jshint esversion: 6 */
+(function () { "use strict"; }());
 
 angular.module('dairyApp').
     component('calendar', {
@@ -17,18 +18,18 @@ angular.module('dairyApp').
                 let newSelectedDate = new Date(currentSelectedDate);
                 newSelectedDate.setMonth(currentSelectedDate.getMonth() - 1);
                 dairyService.changeSelectedDateAsLine(`${newSelectedDate.getDate()}.${newSelectedDate.getMonth() + 1}.${newSelectedDate.getFullYear()}`);
-            }
+            };
 
             $scope.toNextMonthClick = function () {
                 let [dayOfSelectedDate, monthOfSelectedDate, yearOfSelectedDate] = dairyService.getSelectedDateAsLine().split('.');
                 let newSelectedDate = new Date(yearOfSelectedDate, monthOfSelectedDate, 1);
                 dairyService.changeSelectedDateAsLine(`${newSelectedDate.getDate()}.${newSelectedDate.getMonth() + 1}.${newSelectedDate.getFullYear()}`);
-            }
+            };
 
             $scope.toThisDayClick = function () {
                 let today = new Date();
                 dairyService.changeSelectedDateAsLine(`${today.getDate()}.${today.getMonth() + 1}.${today.getFullYear()}`);
-            }
+            };
 
             $scope.dayClick = function (dayOfMonth, isDayInSelectedMonth) {
                 if (isDayInSelectedMonth) {
@@ -36,9 +37,7 @@ angular.module('dairyApp').
                     dairyService.changeSelectedDateAsLine(`${dayOfMonth}.${monthOfSelectedDate}.${yearOfSelectedDate}`);
                     $scope.isCalendarOpen = false;
                 }
-            }
-
-
+            };
 
             function onSelectedDateAsLineUpdated(selectedDateAsLine) {
                 let [dayOfSelectedDate, monthOfSelectedDate, yearOfSelectedDate] = selectedDateAsLine.split('.');
@@ -76,4 +75,4 @@ angular.module('dairyApp').
                 return calendar;
             }
         }
-    })
+    });

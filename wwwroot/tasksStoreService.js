@@ -1,4 +1,5 @@
-'use strict';
+/*jshint esversion: 6 */
+(function () { "use strict"; }());
 
 angular.module('dairyApp').
     service('tasksStoreService', function () {
@@ -16,5 +17,5 @@ angular.module('dairyApp').
                  let serialTasks = JSON.stringify(tasks);
                  localStorage.setItem(localStorageKey, serialTasks);
             }
-        }
-    })
+        };
+    });

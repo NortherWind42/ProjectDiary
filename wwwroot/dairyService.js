@@ -1,4 +1,5 @@
-'use strict';
+/*jshint esversion: 6 */
+(function () { "use strict"; }());
 
 angular.module('dairyApp').
     service('dairyService', function (tasksStoreService) {
@@ -65,5 +66,5 @@ angular.module('dairyApp').
             tasksUpdated(callback) {
                 onTasksUpdatedCallback = callback;
             }
-        }
-    })
+        };
+    });

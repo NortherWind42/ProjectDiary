@@ -1,4 +1,5 @@
-'use strict';
+/*jshint esversion: 6 */
+(function () { "use strict"; }());
 
 describe('service:', function () {
     beforeEach(function () { module('dairyApp'); });
@@ -6,7 +7,7 @@ describe('service:', function () {
     let dairyService;
     beforeEach(inject(function (_dairyService_) {
         dairyService = _dairyService_;
-    }));
+    }));    
 
     let tasksStoreService;
     beforeEach(inject(function (_tasksStoreService_) {
@@ -52,7 +53,7 @@ describe('service:', function () {
 
         it('returns correct date format', function () {
             let dateAsLinesArray = dairyService.getSelectedDateAsLine().split('.');
-            expect(dateAsLinesArray.length).toBe(3)
+            expect(dateAsLinesArray.length).toBe(3);
             let [dayOfSelectedDate, monthOfSelectedDate, yearOfSelectedDate] = dateAsLinesArray;
             let currentDate = new Date();
             expect(+dayOfSelectedDate).toBe(currentDate.getDate());
@@ -92,7 +93,7 @@ describe('component:', function () {
 
     describe('dairy', function () {
         it('should be defined', function () {
-            expect(taskListScope).toBeDefined()
+            expect(taskListScope).toBeDefined();
             expect(taskListCtrl).toBeDefined();
         });
     });
@@ -143,7 +144,7 @@ describe('component:', function () {
 
     describe('taskList', function () {
         it('should be defined', function () {
-            expect(taskListScope).toBeDefined()
+            expect(taskListScope).toBeDefined();
             expect(taskListCtrl).toBeDefined();
         });
     });

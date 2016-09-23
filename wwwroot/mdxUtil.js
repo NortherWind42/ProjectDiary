@@ -8,7 +8,7 @@
                 link: function (scope, element, attributes) {
                     setRGB(element, 'color', mdx.mdxThemeColors, attributes.mdxPaintFg, 'mdx-paint-fg');
                 }
-            }
+            };
         })
         .directive('mdxPaintBg', function (mdx) {
             "use strict";
@@ -17,7 +17,7 @@
                 link: function (scope, element, attributes) {
                     setRGB(element, 'background-color', mdx.mdxThemeColors, attributes.mdxPaintBg, 'mdx-paint-bg');
                 }
-            }
+            };
         })
         .directive('mdxPaintSvg', function (mdx) {
             "use strict";
@@ -26,7 +26,7 @@
                 link: function (scope, element, attributes) {
                     setRGB(element, 'fill', mdx.mdxThemeColors, attributes.mdxPaintSvg, 'mdx-paint-svg');
                 }
-            }
+            };
         })
         // Couldn't get access to _PALETTES any other way?
         .provider('mdx', function ($mdThemingProvider) {
@@ -35,9 +35,9 @@
                     "use strict";
                     return {
                         mdxThemeColors: $mdThemingProvider
-                    }
+                    };
                 }
-            }
+            };
         });
 
     function setRGB(element, styled, themeProvider, input, directiveName) {

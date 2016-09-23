@@ -1,9 +1,13 @@
 
 module.exports = function (grunt) {
   require('jit-grunt')(grunt);
+
   grunt.loadNpmTasks('grunt-karma');
+  grunt.loadNpmTasks('grunt-contrib-jshint');
+  grunt.loadNpmTasks('grunt-postcss');
 
   grunt.initConfig({
+
     less: {
       development: {
         options: {
@@ -16,6 +20,7 @@ module.exports = function (grunt) {
         }
       }
     },
+
     watch: {
       styles: {
         files: ['wwwroot/*.less'],
@@ -25,6 +30,7 @@ module.exports = function (grunt) {
         }
       }
     },
+
     karma: {
       unit: {
         configFile: 'karma.conf.js',
@@ -55,9 +61,29 @@ module.exports = function (grunt) {
         'wwwroot/task-list.component.js',
         'test/*.js'
       ]
+    },
+
+    jshint: {
+      all: ['gruntfile.js', 'wwwroot/*.js', 'test/*.js']
+    },
+
+    postcss: {
+      options: {
+        map: false,
+        processors: [
+          require('pixrem')(),
+          require('autoprefixer')({ browsers: 'last 2 versions' }),
+          require('cssnano')()
+        ]
+      },
+      dist: {
+        src: 'wwwroot/styles.css'
+      }
     }
+
   });
 
   grunt.registerTask('default', ['less', 'watch']);
+
 };
 
