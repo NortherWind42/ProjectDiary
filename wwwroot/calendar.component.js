@@ -37,7 +37,7 @@ angular.module('dairyApp').
           ${newSelectedDate.getMonth() + 1}.
           ${newSelectedDate.getFullYear()}`
         );
-      }
+      };
 
       $scope.toThisDayClick = function() {
         let today = new Date();
