@@ -6,32 +6,22 @@
 @daysDisableColor: @DustyGray;
 
 calendar {
+    display: block;
     
-   * { 
-       box-sizing:border-box;
-    }
-    
-    ul {
-        list-style-type: none;
-    }
-
     .calendar {
+
         &_month {
             &-top {
-                padding: 3.125em 1.563em;
-                width: 100%;    
-
-                ul {
-                    margin: 0;
-                    padding: 0;
-
-                    li {
-                        color: @primaryColor;
-                        font-size: 1.250em;
-                        text-transform: uppercase;
-                        letter-spacing: 0.188em;
-                     }
-                }
+                display: flex;
+                flex-direction: row;
+                flex-wrap: nowrap;
+                justify-content: space-between;
+                text-transform: uppercase;
+                letter-spacing: 0.188em;
+                font-size: 1.250em;
+                padding: 2em 1.563em;
+                width: 100%;   
+                color: @primaryColor; 
             }
 
             &-down {
@@ -45,17 +35,18 @@ calendar {
                         vertical-align: middle;
                     }
                 }
+            }   
+        }
+
+        &_today {
+            display: flex;
+            flex-flow: column;
+            align-items: center;
+            justify-content: center;
+
+            &:hover {
+                cursor: pointer;
             }
-        }
-
-        &_prev {
-            float: left;
-            padding-top: 0.520em;
-        }
-
-        &_next {
-            float: right;
-            padding-top: 0.520em;
         }
 
         &_days-title-container {
@@ -63,8 +54,13 @@ calendar {
         }
 
         &_day-of-week {
+            text-align: center;
             padding: 0.620em;
             color: @daysOfWeekColor;
+        }
+
+        &_day {
+            text-align: center;
         }
 
         &_days-container {
@@ -84,8 +80,9 @@ calendar {
         }
 
         &_calendar-collapsable {
+            border-top:1px solid white;
             &.expanded {
-                height: 28.438em;
+                height: 28.500em;
             }
         }
     }
@@ -120,5 +117,11 @@ calendar {
 @media screen and (max-width: 330px) {
     .md-button {
         min-width: 1%;
+    }
+}
+
+@media screen and (min-width: 750px){
+    calendar .calendar_calendar-collapsable.expanded {
+        height: 30em;
     }
 }

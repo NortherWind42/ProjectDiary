@@ -21,8 +21,9 @@ angular.module('dairyApp').
         let currentSelectedDate = new Date(yearOfSelectedDate, monthOfSelectedDate - 1, 1);
         let newSelectedDate = new Date(currentSelectedDate);
         newSelectedDate.setMonth(currentSelectedDate.getMonth() - 1);
-        dairyService.changeSelectedDateAsLine(`${newSelectedDate.getDate()}.
-                ${newSelectedDate.getMonth() + 1}.${newSelectedDate.getFullYear()}`);
+        dairyService.changeSelectedDateAsLine(
+          `${newSelectedDate.getDate()}.${newSelectedDate.getMonth() + 1}.${newSelectedDate.getFullYear()}`
+          );
       };
 
       $scope.toNextMonthClick = function() {
@@ -33,21 +34,23 @@ angular.module('dairyApp').
         ] = dairyService.getSelectedDateAsLine().split('.');
         let newSelectedDate = new Date(yearOfSelectedDate, monthOfSelectedDate, 1);
         dairyService.changeSelectedDateAsLine(
-          `${newSelectedDate.getDate()}.
-          ${newSelectedDate.getMonth() + 1}.
-          ${newSelectedDate.getFullYear()}`
+          `${newSelectedDate.getDate()}.${newSelectedDate.getMonth() + 1}.${newSelectedDate.getFullYear()}`
         );
       };
 
       $scope.toThisDayClick = function() {
         let today = new Date();
-        dairyService.changeSelectedDateAsLine(`${today.getDate()}.${today.getMonth() + 1}.${today.getFullYear()}`);
-      };
+        dairyService.changeSelectedDateAsLine(
+          `${today.getDate()}.${today.getMonth() + 1}.${today.getFullYear()}`
+          );
+      }
 
       $scope.dayClick = function(dayOfMonth, isDayInSelectedMonth) {
         if (isDayInSelectedMonth) {
           let [day, monthOfSelectedDate, yearOfSelectedDate] = dairyService.getSelectedDateAsLine().split('.');
-          dairyService.changeSelectedDateAsLine(`${dayOfMonth}.${monthOfSelectedDate}.${yearOfSelectedDate}`);
+          dairyService.changeSelectedDateAsLine(
+            `${dayOfMonth}.${monthOfSelectedDate}.${yearOfSelectedDate}`
+            );
           $scope.isCalendarOpen = false;
         }
       };

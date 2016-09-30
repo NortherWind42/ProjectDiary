@@ -12,40 +12,44 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="wwwroot/styles.css">
 
+
     <script src="node_modules/angular/angular.js"></script>
     <script src="node_modules/angular-aria/angular-aria.js"></script>
     <script src="node_modules/angular-animate/angular-animate.js"></script>
     <script src="node_modules/angular-material/angular-material.js"></script>
-    
+
     <script src="wwwroot/mdxUtil.js"></script>
 
     <script src="wwwroot/guidGenerator.js"></script>
     <script src="wwwroot/task.js"></script>
     <script src="wwwroot/dairy.js"></script>
     <script src="wwwroot/dairyApp.module.js"></script>
+    <script src="wwwroot/angularMaterialThemes.js"></script>
     <script src="wwwroot/tasksStoreService.js"></script>
     <script src="wwwroot/dairyService.js"></script>
+    <script src="wwwroot/app.component.js"></script>
     <script src="wwwroot/dairy.component.js"></script>
     <script src="wwwroot/calendar.component.js"></script>
     <script src="wwwroot/task-list.component.js"></script>
 </head>
 
-<body ng-app="dairyApp" ng-cloak>
+<body ng-app="dairyApp">
 
-    <div layout="column" layout-fill>
-        <main flex>
-            <div>
-                <dairy></dairy>
+    <app ng-cloak>
+        <div class="loading-animation-container" mdx-paint-bg="md-primary">
+            <div class="sk-cube-grid">
+                <div class="sk-cube sk-cube1"></div>
+                <div class="sk-cube sk-cube2"></div>
+                <div class="sk-cube sk-cube3"></div>
+                <div class="sk-cube sk-cube4"></div>
+                <div class="sk-cube sk-cube5"></div>
+                <div class="sk-cube sk-cube6"></div>
+                <div class="sk-cube sk-cube7"></div>
+                <div class="sk-cube sk-cube8"></div>
+                <div class="sk-cube sk-cube9"></div>
             </div>
-        </main>
-        <footer>
-            <md-toolbar class="md-scroll-shrink">
-                <div layout="row" layout-align="center center" flex>
-                    <h1 class="md-subhead">© Diary 2016 Васильев Олег</h1>
-                </div>
-            </md-toolbar>
-        </footer>
-    </div>
+        </div>
+        </app>
 
 </body>
 

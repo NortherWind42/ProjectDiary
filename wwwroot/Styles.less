@@ -1,9 +1,12 @@
-main {
-  overflow-y: auto;
-  overflow-x: hidden;
+@import "reset.less";
+
+@media screen and (max-width: 330px) {
+    .md-button {
+        min-width: 1%;
+    }
 }
 
-
 @import "colors.less";
-@import "calendar.less";
-@import "task-list.less";
+@import "loading-animation.css";
+@import "main.less";
+

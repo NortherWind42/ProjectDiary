@@ -37,9 +37,7 @@ angular.module('dairyApp').
         let newSelectedDate = new Date(currentSelectedDate);
         newSelectedDate.setDate(currentSelectedDate.getDate() + 1);
         dairyService.changeSelectedDateAsLine(
-          `${newSelectedDate.getDate()}.
-          ${newSelectedDate.getMonth() + 1}.
-          ${newSelectedDate.getFullYear()}`
+          `${newSelectedDate.getDate()}.${newSelectedDate.getMonth() + 1}.${newSelectedDate.getFullYear()}`
         );
       };
 
@@ -53,9 +51,7 @@ angular.module('dairyApp').
         let newSelectedDate = new Date(currentSelectedDate);
         newSelectedDate.setDate(currentSelectedDate.getDate() - 1);
         dairyService.changeSelectedDateAsLine(
-          `${newSelectedDate.getDate()}.
-          ${newSelectedDate.getMonth() + 1}.
-          ${newSelectedDate.getFullYear()}`
+          `${newSelectedDate.getDate()}.${newSelectedDate.getMonth() + 1}.${newSelectedDate.getFullYear()}`
         );
       };
 

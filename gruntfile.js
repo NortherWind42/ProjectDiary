@@ -73,7 +73,7 @@ module.exports = function (grunt) {
       src: grunt.file.readJSON('path.json'),
       options: {
         config: ".jscsrc",
-        fix: true
+        fix: false
       }
     },
 
