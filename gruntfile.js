@@ -82,7 +82,7 @@ module.exports = function (grunt) {
 
     githooks: {
       all: {
-        'pre-commit': 'postcss'
+        'pre-commit': ''
       }
     },
 
