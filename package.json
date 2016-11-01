@@ -3,11 +3,12 @@
   "version": "0.0.0",
   "description": "site for notes",
   "scripts": {
-    "serve": "lite-server"
+    "serve": "concurrently \"lite-server\" \"grunt\""
   },
   "author": "Aleh Vasilyeu",
   "license": "ISC",
   "devDependencies": {
+    "concurrently": "3.1.0",
     "angular-mocks": "1.5.8",
     "autoprefixer": "6.4.1",
     "cssnano": "3.7.5",
