@@ -4,7 +4,10 @@ module.exports = function (grunt) {
 
   grunt.loadNpmTasks('grunt-karma');
   grunt.loadNpmTasks('grunt-contrib-jshint');
-  grunt.loadNpmTasks('grunt-postcss');
+  grunt.loadNpmTasks('grunt-contrib-less');
+  grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-contrib-cssmin');
+  grunt.loadNpmTasks('grunt-autoprefixer');
   grunt.loadNpmTasks('grunt-githooks');
   grunt.loadNpmTasks("grunt-jscs");
 
@@ -66,7 +69,7 @@ module.exports = function (grunt) {
     },
 
     jshint: {
-      all:  grunt.file.readJSON('path.json')
+      all: grunt.file.readJSON('path.json')
     },
 
     jscs: {
@@ -77,29 +80,34 @@ module.exports = function (grunt) {
       }
     },
 
-    postcss: {
-      options: {
-        map: false,
-        processors: [
-          require('pixrem')(),
-          require('autoprefixer')({ browsers: 'last 2 versions' }),
-          require('cssnano')()
-        ]
-      },
-      dist: {
+    githooks: {
+      all: {
+        'pre-commit': 'postcss'
+      }
+    },
+
+    cssmin: {
+      target: {
+        files: [{
+          expand: true,
+          src: 'wwwroot/styles.css'
+        }]
+      }
+    },
+
+    autoprefixer: {
+      development: {
+        browsers: ['last 2 version', 'ie 9'],
+        expand: true,
+        flatten: true,
         src: 'wwwroot/styles.css'
       }
     },
 
-    githooks: {
-      all: {
-        'pre-commit': 'jscs jshint'
-      }
-    }
-
   });
 
   grunt.registerTask('default', ['less', 'watch']);
+    grunt.registerTask('build-css', ['less', 'autoprefixer', 'cssmin']);
 
 };
 
