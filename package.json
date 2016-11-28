@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "description": "site for notes",
   "scripts": {
-    "serve": "concurrently \"lite-server\" \"grunt\""
+    "start": "concurrently \"lite-server\" \"grunt\""
   },
   "author": "Aleh Vasilyeu",
   "license": "ISC",
